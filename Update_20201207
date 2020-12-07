@@ -1,0 +1,22 @@
+NB
+
+On 7 December 2020, I realized a minor issue with the code uploaded on 25 November 2020. 
+The issue pertains to lines 42-43 of the bayes_main_code.m script, which reads:
+
+coastcode=[902 904 906 908 912 916 930 931 ...
+    932 934 936 938 939 940 950 941 960]; % PSMSL ID for coastlines
+
+This line identifies coastlines to be used in the data assimilation following the coastline
+numbering scheme from the PSMSL. Number 950 refers to Bermuda. This should not be there, since
+no tide gauges from Bermuda were used in the Piecuch (2020). 
+
+This number appears in these lines because I was experimenting with including the record from
+ST. GEORGES / ESSO PIER (BERMUDA) to quantify whether it has a meaningful impact on the estimation
+of Florida Current transport (following a question from T. Frederikse at NASA JPL at the 2019 AGU
+Fall Meeting). Including this tide gauge makes no discernable difference, so I deleted it for the
+runs performed in the paper.
+
+So, if the user is trying to reproduce the results from Piecuch (2020), please delete the number
+950 from the coastcode definition above.
+
+CGP 7 Dec 2020
